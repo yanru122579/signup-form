@@ -12,7 +12,8 @@ module.exports = {
         blue:{
           DEFAULT:`#5E54A4`,
           dark:`#3D3B4B`
-        }
+        },
+        gray:`#BAB7D4`
       },
       boxShadow:{
         DEFAULT:`0px 8px 0px rgba(0,0,0,0.14688)`,

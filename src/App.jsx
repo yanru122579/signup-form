@@ -28,7 +28,11 @@ function TextField({ id, label }) {
       {/* 第二種用法 */}
       {value === "" && (
         <label
-          className={clsx("absolute px-3", value !== "" && "opacity-0")}
+          className={clsx(
+            "absolute px-3",
+            "text-md font-medium",
+            value !== "" && "opacity-0"
+          )}
           htmlFor={id}
         >
           {label}
@@ -38,7 +42,11 @@ function TextField({ id, label }) {
         type="text"
         name={id}
         id={id}
-        className="border w-full p-3 rounded"
+        className={clsx(
+          "outline-none",
+          "border border-blue-dark border-opacity-10 w-full p-3 rounded",
+          "focus:border-blue"
+        )}
         onChange={(event) => setValue(event.target.value)}
       />
     </div>
@@ -46,21 +54,21 @@ function TextField({ id, label }) {
 }
 function Button({ className, children }) {
   return (
-    <div
+    <button
       className={clsx(
         "rounded-lg  w-full p-4 text-center bg-green shadow-solid",
         className
       )}
     >
       {children}
-    </div>
+    </button>
   );
 }
 function App() {
   return (
-    <div className="text-white px-6 space-y-16">
+    <div className="h-full text-white px-6 gap-16 flex flex-col md:flex-row md:items-center max-w-7xl mx-auto">
       {/* article */}
-      <article className="pt-24 text-center space-y-6">
+      <article className="pt-24 md:pt-0 text-center md:text-left space-y-6 md:flex-1">
         <h1 className="font-bold text-2xl">Learn to code by watching others</h1>
         <p>
           See how experienced developers solve problems in real-time. Watching
@@ -69,7 +77,7 @@ function App() {
         </p>
       </article>
 
-      <section className="grid gap-6">
+      <section className="grid gap-6 md:flex-1">
         {/* form title */}
         <Card className="bg-blue">
           <p className="px-8">
@@ -86,6 +94,14 @@ function App() {
             <TextField id="password" label="password" />
             <Button className="text-white">CLAIM YOUR FREE TRIAL</Button>
             {/* terms */}
+            <div>
+              <p className="text-gray text-xs px-4">
+                By clicking the button, you are agreeing to our
+                <a href="#" className="text-red  font-bold">
+                  Terms and Services
+                </a>
+              </p>
+            </div>
           </form>
         </Card>
       </section>
